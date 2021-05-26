@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="fun.muzi.class_selection.repository.StudentRepository">
+
+    <select id="getById" resultType="fun.muzi.class_selection.entity.Student">
+        select * from student where stud_id = #{stud_id}
+    </select>
+
+    <select id="existStudentId" parameterType="java.lang.String" resultType="java.lang.Integer">
+        select count(*) from student where stud_id = #{stud_id}
+    </select>
+
+    <select id="getClassList" resultType="fun.muzi.class_selection.entity.Curriculum">
+        select * from (
+            select * from take
+            where stud_id=#{stud_id} and year=#{year} and semester=#{semester}
+            ) t
+            natural join class
+    </select>
+
+    <insert id="addTake" >
+        insert into take (stud_id, cour_id, curr_id, year, semester)
+        values (#{stud_id},#{cour_id},#{curr_id},#{year},#{semester})
+    </insert>
+
+    <delete id="dropTake">
+        delete from take
+        where stud_id=#{stud_id} and year=#{year} and semester=#{semester}
+          and cour_id=#{cour_id} and curr_id=#{curr_id}
+    </delete>
+    
+    <update id="update" parameterType="fun.muzi.class_selection.entity.Student">
+        update student set stud_name=#{stud_name}, gender=#{gender},
+                           depa_name=#{depa_name}, major=#{major}, passwd=#{passwd}
+        where stud_id=#{stud_id}
+    </update>
+</mapper>
