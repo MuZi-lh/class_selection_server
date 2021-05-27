@@ -33,6 +33,6 @@ public class Curriculum {
     private String door;
     private String slot_id;
     private String day;
-    private String start_class;
-    private String end_class;
+    private Integer start_class;
+    private Integer end_class;
 }

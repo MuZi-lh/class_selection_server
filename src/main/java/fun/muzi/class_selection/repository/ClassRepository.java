@@ -13,4 +13,6 @@ import java.util.Map;
 public interface ClassRepository {
 
     Page<Curriculum> search(Curriculum curriculum);
+
+    Page<Curriculum> redundantSearch(Curriculum curriculum);
 }

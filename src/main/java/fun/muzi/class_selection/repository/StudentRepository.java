@@ -21,4 +21,6 @@ public interface StudentRepository {
     Integer dropTake(String stud_id, String cour_id, String curr_id, Integer year, String semester);
 
     Integer update(Student student);
+
+    Double getScore(String stud_id);
 }

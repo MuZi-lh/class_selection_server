@@ -19,4 +19,22 @@
         </where>
     </select>
 
+    <select id="redundantSearch"
+            parameterType="fun.muzi.class_selection.entity.Curriculum"
+            resultType="fun.muzi.class_selection.entity.Curriculum">
+        select *
+        from curr_count natural right outer join curriculum
+        <where>
+            stud_num &lt; capacity
+            <if test='day != "*"'>AND day = #{day}</if>
+            <if test='campus != "*"'>AND campus = #{campus}</if>
+            <if test='depa_name != "*"'>AND depa_name = #{depa_name}</if>
+            <if test='cour_id != ""'>AND cour_id = #{cour_id}</if>
+            <if test='curr_id != ""'>AND curr_id = #{curr_id}</if>
+            <if test='lect_id != ""'>AND lect_id = #{lect_id}</if>
+            <if test='lect_name != ""'>AND lect_name = #{lect_name}</if>
+            <if test='cour_name != null'>AND cour_name like concat(concat('%',#{cour_name}),'%')</if>
+        </where>
+    </select>
+
 </mapper>

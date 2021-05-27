@@ -29,8 +29,8 @@ public class ClassService {
         curriculum.setLect_id(body.get("lect_id"));
         curriculum.setLect_name(body.get("lect_name"));
         System.out.println(curriculum);
-        if (body.get("redundatOnly").equals("true")){
-            PageInfo<Curriculum> p = new PageInfo<>(classRepository.search(curriculum));
+        if (Boolean.parseBoolean(body.get("redundantOnly"))){
+            PageInfo<Curriculum> p = new PageInfo<>(classRepository.redundantSearch(curriculum));
             return p;
         }else{
             PageInfo<Curriculum> p = new PageInfo<>(classRepository.search(curriculum));
