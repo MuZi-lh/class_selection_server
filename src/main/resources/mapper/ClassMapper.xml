@@ -23,9 +23,9 @@
             parameterType="fun.muzi.class_selection.entity.Curriculum"
             resultType="fun.muzi.class_selection.entity.Curriculum">
         select *
-        from curr_count natural right outer join curriculum
+        from curr_count natural right outer join class
         <where>
-            stud_num &lt; capacity
+            (stud_num is null or stud_num &lt; capacity)
             <if test='day != "*"'>AND day = #{day}</if>
             <if test='campus != "*"'>AND campus = #{campus}</if>
             <if test='depa_name != "*"'>AND depa_name = #{depa_name}</if>
