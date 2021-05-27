@@ -2,6 +2,7 @@ package fun.muzi.class_selection.repository;
 
 import fun.muzi.class_selection.entity.Curriculum;
 import fun.muzi.class_selection.entity.Student;
+import fun.muzi.class_selection.entity.Take;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -14,13 +15,15 @@ public interface StudentRepository {
 
     Integer existStudentId(String stud_id);
 
-    List<Curriculum> getClassList(String stud_id, Integer year, String semester);
+    List<Take> getClassList(String stud_id, Integer year, String semester);
 
     Integer addTake(String stud_id, String cour_id, String curr_id, Integer year, String semester);
 
     Integer dropTake(String stud_id, String cour_id, String curr_id, Integer year, String semester);
 
-    Integer update(Student student);
+    Integer changeInfo(Student student);
+
+    Integer changePasswd(String stud_id, String new_passwd);
 
     Double getScore(String stud_id);
 }

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="fun.muzi.class_selection.repository.LecturerRepository">
+
+    <select id="getById" resultType="fun.muzi.class_selection.entity.Lecturer">
+        select * from lecturer where lect_id=#{lect_id}
+    </select>
+
+    <select id="getClassList" resultType="fun.muzi.class_selection.entity.Curriculum">
+        select * from class
+        where lect_id=#{lect_id} and year=#{year} and semester=#{semester}
+    </select>
+
+    <select id="getStudentList" resultType="fun.muzi.class_selection.entity.Student">
+        select stud_id, stud_name, depa_name, major
+        from student
+        where stud_id in (
+            select stud_id
+            from take
+            where cour_id = #{cour_id} and curr_id=#{curr_id} and year=#{year} and semester=#{semester}
+            )
+    </select>
+
+    <update id="update" parameterType="fun.muzi.class_selection.entity.Lecturer">
+        update lecturer set depa_name=#{depa_name}, lect_name=#{lect_name}, passwd=#{passwd}
+        where lect_id=#{lect_id}
+    </update>
+
+</mapper>

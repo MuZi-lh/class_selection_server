@@ -1,5 +1,6 @@
 package fun.muzi.class_selection.controller;
 
+import fun.muzi.class_selection.entity.Student;
 import fun.muzi.class_selection.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -54,6 +55,11 @@ public class StudentController {
                 Integer.parseInt(body.get("year")),
                 body.get("semester")
         );
+    }
+
+    @RequestMapping("/changeInfo")
+    public Object changeInfo(@RequestBody Student student){
+        return studentService.changeInfo(student);
     }
 
     @RequestMapping("/changePasswd")

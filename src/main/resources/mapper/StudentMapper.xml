@@ -10,7 +10,7 @@
         select count(*) from student where stud_id = #{stud_id}
     </select>
 
-    <select id="getClassList" resultType="fun.muzi.class_selection.entity.Curriculum">
+    <select id="getClassList" resultType="fun.muzi.class_selection.entity.Take">
         select * from (
             select * from take
             where stud_id=#{stud_id} and year=#{year} and semester=#{semester}
@@ -34,10 +34,15 @@
         where stud_id=#{stud_id} and year=#{year} and semester=#{semester}
           and cour_id=#{cour_id} and curr_id=#{curr_id}
     </delete>
+
+    <update id="changePasswd">
+        update student set passwd=#{new_passwd}
+        where stud_id=#{stud_id}
+    </update>
     
-    <update id="update" parameterType="fun.muzi.class_selection.entity.Student">
+    <update id="changeInfo" parameterType="fun.muzi.class_selection.entity.Student">
         update student set stud_name=#{stud_name}, gender=#{gender},
-                           depa_name=#{depa_name}, major=#{major}, passwd=#{passwd}
+                           depa_name=#{depa_name}, major=#{major}
         where stud_id=#{stud_id}
     </update>
 </mapper>

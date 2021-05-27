@@ -9,10 +9,6 @@ import org.springframework.stereotype.Component;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class Lecturer {
-    private String lect_id;
-    private String depa_name;
-    private String lect_name;
-    private String passwd;
-    private String major;
+public class Take extends Curriculum{
+    private Float grade;
 }

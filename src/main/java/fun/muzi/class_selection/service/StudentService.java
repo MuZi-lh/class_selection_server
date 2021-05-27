@@ -42,10 +42,13 @@ public class StudentService {
         if (!check(stud_id,old_passwd)){
             return "FAILURE: old password is fault!";
         }else{
-            Student student = studentRepository.getById(stud_id);
-            student.setPasswd(Encryption.getSHA256(new_passwd));
-            return studentRepository.update(student);
+            String p = Encryption.getSHA256(new_passwd);
+            return studentRepository.changePasswd(stud_id, p);
         }
+    }
+
+    public Object changeInfo(Student student) {
+        return studentRepository.changeInfo(student);
     }
 
     public Object getScore(String stud_id){
