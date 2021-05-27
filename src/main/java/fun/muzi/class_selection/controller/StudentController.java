@@ -20,6 +20,11 @@ public class StudentController {
         return studentService.check(body.get("stud_id"),body.get("passwd"));
     }
 
+    @RequestMapping("/getById")
+    public Object getById(@RequestBody Map<String, String> body){
+        return studentService.getById(body.get("stud_id"));
+    }
+
     @RequestMapping("/getClassList")
     public Object getClassList(@RequestBody Map<String, String> body){
         return studentService.getClassList(

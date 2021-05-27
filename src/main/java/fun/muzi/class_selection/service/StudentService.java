@@ -28,6 +28,12 @@ public class StudentService {
         return studentRepository.addTake(stud_id, cour_id, curr_id, year, semester);
     }
 
+    public Object getById(String stud_id) {
+        Student student = studentRepository.getById(stud_id);
+        student.setPasswd("就不告诉你");
+        return student;
+    }
+
     public Object dropTake(String stud_id, String cour_id, String curr_id, Integer year, String semester) {
         return studentRepository.dropTake(stud_id, cour_id, curr_id, year, semester);
     }
