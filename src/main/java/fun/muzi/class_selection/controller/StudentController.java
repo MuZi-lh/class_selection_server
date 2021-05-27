@@ -59,4 +59,10 @@ public class StudentController {
                 body.get("new_passwd")
         );
     }
+
+    @RequestMapping("/login")
+    public Object getScore(@RequestBody Map<String, String> body){
+        return studentService.getScore(body.get("stud_id"));
+    }
+
 }

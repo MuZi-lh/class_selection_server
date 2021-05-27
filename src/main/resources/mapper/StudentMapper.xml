@@ -18,6 +18,12 @@
             natural join class
     </select>
 
+    <select id="getScore" resultType="java.lang.Double">
+        select sum(grade*credit)/sum(credit) as score
+        from class natural join take
+        where stud_id=#{stud_id}
+    </select>
+
     <insert id="addTake" >
         insert into take (stud_id, cour_id, curr_id, year, semester)
         values (#{stud_id},#{cour_id},#{curr_id},#{year},#{semester})

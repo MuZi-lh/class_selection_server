@@ -41,4 +41,8 @@ public class StudentService {
             return studentRepository.update(student);
         }
     }
+
+    public Object getScore(String stud_id){
+        return studentRepository.getScore(stud_id);
+    }
 }
