@@ -60,7 +60,7 @@ public class StudentController {
         );
     }
 
-    @RequestMapping("/login")
+    @RequestMapping("/getScore")
     public Object getScore(@RequestBody Map<String, String> body){
         return studentService.getScore(body.get("stud_id"));
     }

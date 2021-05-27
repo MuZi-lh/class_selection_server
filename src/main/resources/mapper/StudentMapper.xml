@@ -21,7 +21,7 @@
     <select id="getScore" resultType="java.lang.Double">
         select sum(grade*credit)/sum(credit) as score
         from class natural join take
-        where stud_id=#{stud_id}
+        where stud_id=#{stud_id} and grade is not null
     </select>
 
     <insert id="addTake" >
