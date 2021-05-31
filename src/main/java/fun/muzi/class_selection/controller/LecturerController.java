@@ -54,6 +54,7 @@ public class LecturerController {
         );
     }
 
+    @RequestMapping("/changeInfo")
     public Object changeInfo(@RequestBody Lecturer lecturer){
         return lecturerService.changeInfo(lecturer);
     }

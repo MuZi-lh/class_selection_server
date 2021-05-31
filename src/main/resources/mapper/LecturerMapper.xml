@@ -21,9 +21,13 @@
             )
     </select>
 
-    <update id="update" parameterType="fun.muzi.class_selection.entity.Lecturer">
-        update lecturer set depa_name=#{depa_name}, lect_name=#{lect_name}, passwd=#{passwd}
+    <update id="changeInfo" parameterType="fun.muzi.class_selection.entity.Lecturer">
+        update lecturer set depa_name=#{depa_name}, lect_name=#{lect_name}, major=#{major}
         where lect_id=#{lect_id}
     </update>
 
+    <update id="changePasswd">
+        update lecturer set passwd=#{new_passwd}
+        where lect_id=#{lect_id}
+    </update>
 </mapper>

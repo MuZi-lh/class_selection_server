@@ -40,13 +40,12 @@ public class LecturerService {
         if (!check(lect_id,old_passwd)){
             return "FAILURE: old password is fault!";
         }else{
-            Lecturer lecturer = lecturerRepository.getById(lect_id);
-            lecturer.setPasswd(Encryption.getSHA256(new_passwd));
-            return lecturerRepository.update(lecturer);
+            String p = Encryption.getSHA256(new_passwd);
+            return lecturerRepository.changePasswd(lect_id, p);
         }
     }
 
     public Object changeInfo(Lecturer lecturer){
-        return lecturerRepository.update(lecturer);
+        return lecturerRepository.changeInfo(lecturer);
     }
 }
