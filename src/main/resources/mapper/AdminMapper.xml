@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="fun.muzi.class_selection.repository.AdminRepository">
+
+    <insert id="addCourse" parameterType="fun.muzi.class_selection.entity.Course">
+        insert into course values (#{cour_id},#{cour_name},#{type},#{exam_type},
+                                   #{depa_name},#{credit},#{requirement},
+                                   #{prerequisite})
+    </insert>
+
+    <delete id="dropCourse" parameterType="java.lang.String">
+        delete from course where cour_id=#{cour_id}
+    </delete>
+
+    <update id="updateCourse" parameterType="fun.muzi.class_selection.entity.Course">
+        update course set cour_name=#{cour_name},type=#{type},
+                          exam_type=#{exam_type},depa_name= #{depa_name},credit=#{credit},
+                          requirement=#{requirement},
+                          prerequisite=#{prerequisite}
+        where cour_id=#{cour_id}
+    </update>
+
+    <insert id="addLecturer" parameterType="fun.muzi.class_selection.entity.Lecturer">
+        insert into lecturer values (#{lect_id},#{depa_name},
+                                     #{lect_name},#{passwd},#{major})
+    </insert>
+
+    <delete id="dropLecturer" parameterType="java.lang.String">
+        delete from lecturer where lect_id=#{lect_id}
+    </delete>
+
+    <insert id="addStudent" parameterType="fun.muzi.class_selection.entity.Lecturer">
+        insert into student values (#{stud_id},#{stud_name},#{gender},#{depa_name},
+                                    #{major},#{total_credit},#{passwd})
+    </insert>
+
+    <delete id="dropStudent" parameterType="java.lang.String">
+        delete from student where stud_id=#{stud_id}
+    </delete>
+
+    <insert id="addCurriculum" parameterType="fun.muzi.class_selection.entity.Curriculum">
+        insert into curriculum values (#{cour_id},#{curr_id},#{year},#{semester},
+                                       #{start_week},#{end_week},#{lect_id},
+                                       #{room_id},#{slot_id},#{capacity})
+    </insert>
+
+    <delete id="dropCurriculum" parameterType="fun.muzi.class_selection.entity.Curriculum">
+        delete from curriculum where cour_id=#{cour_id} and curr_id=#{curr_id}
+                                    and year=#{year} and semester=#{semester}
+    </delete>
+
+</mapper>

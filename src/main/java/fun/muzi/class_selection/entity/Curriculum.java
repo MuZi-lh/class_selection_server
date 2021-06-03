@@ -35,4 +35,5 @@ public class Curriculum {
     private String day;
     private Integer start_class;
     private Integer end_class;
+    private Integer capacity;
 }

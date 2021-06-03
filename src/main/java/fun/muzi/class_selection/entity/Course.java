@@ -18,5 +18,5 @@ public class Course {
     private String depa_name;
     private String credit;
     private String requirement;
-    private JSONObject prerequisite;
+    private String prerequisite;
 }
