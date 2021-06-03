@@ -11,14 +11,13 @@
         where lect_id=#{lect_id} and year=#{year} and semester=#{semester}
     </select>
 
-    <select id="getStudentList" resultType="fun.muzi.class_selection.entity.Student">
-        select stud_id, stud_name, depa_name, major
-        from student
-        where stud_id in (
-            select stud_id
+    <select id="getStudentList" resultType="Map">
+        select stud_id, stud_name, depa_name, major, grade
+        from student natural join (
+            select stud_id, grade
             from take
             where cour_id = #{cour_id} and curr_id=#{curr_id} and year=#{year} and semester=#{semester}
-            )
+            ) t
     </select>
 
     <update id="changeInfo" parameterType="fun.muzi.class_selection.entity.Lecturer">

@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 @Repository
 @Mapper
@@ -16,7 +17,7 @@ public interface LecturerRepository {
 
     List<Curriculum> getClassList(String lect_id, Integer year, String semester);
 
-    List<Student> getStudentList(String cour_id, String curr_id, Integer year, String semester);
+    List<Map<String,Object>> getStudentList(String cour_id, String curr_id, Integer year, String semester);
 
     Integer changeInfo(Lecturer lecturer);
 
