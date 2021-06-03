@@ -46,4 +46,18 @@
         </where>
     </select>
 
+    <select id="getCourseList" parameterType="fun.muzi.class_selection.entity.Course" resultType="Map">
+        select cour_id, cour_name, depa_name, credit,
+               IF(type is null, '',type) as type,
+               IF(exam_type is null, '',exam_type) as exam_type,
+               IF(requirement is null, '',requirement) as requirement,
+               IF(prerequisite is null, '',prerequisite) as prerequisite
+        from course
+        <where>
+            <if test='depa_name != "*"'>AND depa_name = #{depa_name}</if>
+            <if test='cour_id != ""'>AND cour_id = #{cour_id}</if>
+            <if test='cour_name != null'>AND cour_name like concat(concat('%',#{cour_name}),'%')</if>
+        </where>
+    </select>
+
 </mapper>

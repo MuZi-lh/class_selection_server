@@ -1,5 +1,6 @@
 package fun.muzi.class_selection.service;
 
+import fun.muzi.class_selection.entity.Course;
 import fun.muzi.class_selection.entity.Curriculum;
 import fun.muzi.class_selection.repository.ClassRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,13 @@ public class ClassService {
         }else{
             return classRepository.search(curriculum);
         }
+    }
 
+    public Object getCourseList(Map<String, String> body) {
+        Course course = new Course();
+        course.setDepa_name(body.get("depa_name"));
+        course.setCour_id(body.get("cour_id"));
+        course.setCour_name(body.get("cour_name"));
+        return classRepository.getCourseList(course);
     }
 }
