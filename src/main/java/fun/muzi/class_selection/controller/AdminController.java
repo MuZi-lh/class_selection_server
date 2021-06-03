@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Currency;
 import java.util.Map;
 
 @RestController
@@ -19,6 +18,11 @@ public class AdminController {
 
     @Autowired
     AdminService adminService;
+
+    @RequestMapping("/login")
+    public Object login(@RequestBody Map<String, String> body){
+        return adminService.check(body.get("admi_id"),body.get("passwd"));
+    }
 
     @RequestMapping("/addCourse")
     public Object addCourse(@RequestBody Course course) {

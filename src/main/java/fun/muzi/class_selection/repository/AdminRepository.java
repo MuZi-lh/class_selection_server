@@ -1,18 +1,16 @@
 package fun.muzi.class_selection.repository;
 
-import fun.muzi.class_selection.entity.Course;
-import fun.muzi.class_selection.entity.Curriculum;
-import fun.muzi.class_selection.entity.Lecturer;
-import fun.muzi.class_selection.entity.Student;
+import fun.muzi.class_selection.entity.*;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
-import java.util.Currency;
 import java.util.List;
 
 @Repository
 @Mapper
 public interface AdminRepository {
+
+    Admin getById(String admi_id);
 
     Integer addCourse(Course course);
 

@@ -1,9 +1,6 @@
 package fun.muzi.class_selection.service;
 
-import fun.muzi.class_selection.entity.Course;
-import fun.muzi.class_selection.entity.Curriculum;
-import fun.muzi.class_selection.entity.Lecturer;
-import fun.muzi.class_selection.entity.Student;
+import fun.muzi.class_selection.entity.*;
 import fun.muzi.class_selection.repository.AdminRepository;
 import fun.muzi.class_selection.util.Encryption;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +14,14 @@ public class AdminService {
 
     @Autowired
     AdminRepository adminRepository;
+
+    public Boolean check(String admi_id, String passwd){
+        Admin admin = adminRepository.getById(admi_id);
+        if (admin == null) {
+            return false;
+        }
+        return admin.getPasswd().equals(Encryption.getSHA256(passwd));
+    }
 
     public Object addCourse(Course course) {
         return adminRepository.addCourse(course);

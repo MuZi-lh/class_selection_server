@@ -2,6 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="fun.muzi.class_selection.repository.AdminRepository">
 
+    <select id="getById" parameterType="java.lang.String"
+            resultType="fun.muzi.class_selection.entity.Admin">
+        select * from admin where admi_id=#{admi_id}
+    </select>
+
     <insert id="addCourse" parameterType="fun.muzi.class_selection.entity.Course">
         insert into course values (#{cour_id},#{cour_name},#{type},#{exam_type},
                                    #{depa_name},#{credit},#{requirement},

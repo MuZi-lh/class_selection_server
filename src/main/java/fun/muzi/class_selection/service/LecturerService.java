@@ -1,9 +1,7 @@
 package fun.muzi.class_selection.service;
 
 import fun.muzi.class_selection.entity.Lecturer;
-import fun.muzi.class_selection.entity.Student;
 import fun.muzi.class_selection.repository.LecturerRepository;
-import fun.muzi.class_selection.repository.StudentRepository;
 import fun.muzi.class_selection.util.Encryption;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
