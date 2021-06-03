@@ -12,7 +12,7 @@
     </select>
 
     <select id="getStudentList" resultType="Map">
-        select stud_id, stud_name, depa_name, major, grade
+        select stud_id, stud_name, depa_name, major, IF(grade is null,-1,grade)as grade
         from student natural join (
             select stud_id, grade
             from take
