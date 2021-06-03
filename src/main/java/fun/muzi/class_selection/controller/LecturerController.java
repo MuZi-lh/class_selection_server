@@ -45,6 +45,18 @@ public class LecturerController {
         );
     }
 
+    @RequestMapping("/setGrade")
+    public Object setGrade(@RequestBody Map<String, String> body) {
+        return lecturerService.setGrade(
+                body.get("cour_id"),
+                body.get("curr_id"),
+                Integer.parseInt(body.get("year")),
+                body.get("semester"),
+                body.get("stud_id"),
+                Float.parseFloat(body.get("grade"))
+        );
+    }
+
     @RequestMapping("/changePasswd")
     public Object changePasswd(@RequestBody Map<String, String> body){
         return lecturerService.changePasswd(

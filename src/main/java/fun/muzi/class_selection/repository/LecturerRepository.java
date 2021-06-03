@@ -19,6 +19,8 @@ public interface LecturerRepository {
 
     List<Map<String,Object>> getStudentList(String cour_id, String curr_id, Integer year, String semester);
 
+    Integer setGrade(String cour_id, String curr_id, Integer year, String semester, String stud_id, Float grade);
+
     Integer changeInfo(Lecturer lecturer);
 
     Integer changePasswd(String lect_id, String new_passwd);

@@ -34,6 +34,11 @@ public class LecturerService {
         return lecturerRepository.getStudentList(cour_id, curr_id, year, semester);
     }
 
+    public Object setGrade(String cour_id, String curr_id,
+                           Integer year, String semester, String stud_id, Float grade) {
+        return lecturerRepository.setGrade(cour_id, curr_id, year, semester, stud_id, grade);
+    }
+
     public Object changePasswd(String lect_id, String old_passwd, String new_passwd){
         if (!check(lect_id,old_passwd)){
             return "FAILURE: old password is fault!";
