@@ -23,6 +23,9 @@ public class AdminService {
         return admin.getPasswd().equals(Encryption.getSHA256(passwd));
     }
 
+    public Object getCourseList(Course course) {
+        return adminRepository.getCourseList(course);
+    }
     public Object addCourse(Course course) {
         return adminRepository.addCourse(course);
     }
@@ -35,6 +38,10 @@ public class AdminService {
         return adminRepository.updateCourse(course);
     }
 
+    public Object getLecturerList(Lecturer lecturer) {
+        return adminRepository.getLecturerList(lecturer);
+    }
+
     public Object addLecturer(Lecturer lecturer) {
         lecturer.setPasswd(Encryption.getSHA256(lecturer.getPasswd()));
         return adminRepository.addLecturer(lecturer);
@@ -42,6 +49,11 @@ public class AdminService {
 
     public Object dropLecturer(String lect_id) {
         return adminRepository.dropLecturer(lect_id);
+    }
+
+    public Object getStudentList(Map<String, String> body) {
+        return adminRepository.getStudentList(body.get("depa_name"),
+                body.get("major"), body.get("year"));
     }
 
     public Object addStudent(Student student) {

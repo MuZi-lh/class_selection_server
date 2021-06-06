@@ -20,8 +20,5 @@ public class ClassController {
         return classService.search(body);
     }
 
-    @RequestMapping("/getCourseList")
-    Object getCourseList(@RequestBody Map<String, String> body) {
-        return classService.getCourseList(body);
-    }
+
 }

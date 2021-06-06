@@ -24,6 +24,11 @@ public class AdminController {
         return adminService.check(body.get("admi_id"),body.get("passwd"));
     }
 
+    @RequestMapping("/getCourseList")
+    public Object getCourseList(@RequestBody Course course) {
+        return adminService.getCourseList(course);
+    }
+
     @RequestMapping("/addCourse")
     public Object addCourse(@RequestBody Course course) {
         return adminService.addCourse(course);
@@ -39,6 +44,11 @@ public class AdminController {
         return adminService.updateCourse(course);
     }
 
+    @RequestMapping("/getLecturerList")
+    public Object getLecturerList(@RequestBody Lecturer lecturer){
+        return adminService.getLecturerList(lecturer);
+    }
+
     @RequestMapping("/addLecturer")
     public Object addLecturer(@RequestBody Lecturer lecturer) {
         return adminService.addLecturer(lecturer);
@@ -47,6 +57,11 @@ public class AdminController {
     @RequestMapping("/dropLecturer")
     public Object dropLecturer(@RequestBody Map<String, String> body) {
         return adminService.dropLecturer(body.get("lect_id"));
+    }
+
+    @RequestMapping("/getStudentList")
+    public Object getStudentList(@RequestBody Map<String, String> body) {
+        return adminService.getStudentList(body);
     }
 
     @RequestMapping("/addStudent")

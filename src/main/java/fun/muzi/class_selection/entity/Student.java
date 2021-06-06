@@ -17,6 +17,5 @@ public class Student {
     private String depa_name;
     private String major;
     private Integer total_credit;
-    private JSONObject credit_detail;
     private String passwd;
 }

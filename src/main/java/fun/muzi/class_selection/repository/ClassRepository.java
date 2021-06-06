@@ -16,5 +16,4 @@ public interface ClassRepository {
 
     List<Map<String,Object>> redundantSearch(Curriculum curriculum);
 
-    List<Map<String, String>> getCourseList(Course course);
 }

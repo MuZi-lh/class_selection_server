@@ -12,6 +12,8 @@ public interface AdminRepository {
 
     Admin getById(String admi_id);
 
+    List<Course> getCourseList(Course course);
+
     Integer addCourse(Course course);
 
     Integer dropCourse(String cour_id);
@@ -22,9 +24,13 @@ public interface AdminRepository {
 
     Integer updateCourse(Course course);
 
+    List<Lecturer> getLecturerList(Lecturer lecturer);
+
     Integer addLecturer(Lecturer lecturer);
 
     Integer dropLecturer(String lect_id);
+
+    List<Student> getStudentList(String depa_name, String major, String year);
 
     Integer addStudent(Student student);
 

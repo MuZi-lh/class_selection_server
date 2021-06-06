@@ -34,11 +34,4 @@ public class ClassService {
         }
     }
 
-    public Object getCourseList(Map<String, String> body) {
-        Course course = new Course();
-        course.setDepa_name(body.get("depa_name"));
-        course.setCour_id(body.get("cour_id"));
-        course.setCour_name(body.get("cour_name"));
-        return classRepository.getCourseList(course);
-    }
 }

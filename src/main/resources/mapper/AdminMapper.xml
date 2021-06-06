@@ -7,6 +7,19 @@
         select * from admin where admi_id=#{admi_id}
     </select>
 
+    <select id="getCourseList" parameterType="fun.muzi.class_selection.entity.Course"
+            resultType="fun.muzi.class_selection.entity.Course">
+        select cour_id, cour_name, depa_name, credit,
+        IF(type is null, '',type) as type,
+        IF(exam_type is null, '',exam_type) as exam_type,
+        IF(requirement is null, '',requirement) as requirement,
+        IF(prerequisite is null, '',prerequisite) as prerequisite
+        from course
+        <where>
+            <if test='depa_name != "*"'>AND depa_name = #{depa_name}</if>
+        </where>
+    </select>
+
     <insert id="addCourse" parameterType="fun.muzi.class_selection.entity.Course">
         insert into course values (#{cour_id},#{cour_name},#{type},#{exam_type},
                                    #{depa_name},#{credit},#{requirement},
@@ -25,6 +38,17 @@
         where cour_id=#{cour_id}
     </update>
 
+    <select id="getLecturerList" parameterType="fun.muzi.class_selection.entity.Lecturer"
+            resultType="fun.muzi.class_selection.entity.Lecturer">
+        select lect_id, depa_name, lect_name, major
+        from lecturer
+        <where>
+            <if test='depa_name != "*"'>AND depa_name = #{depa_name}
+                <if test='major != ""'>AND major = #{major}</if>
+            </if>
+        </where>
+    </select>
+
     <insert id="addLecturer" parameterType="fun.muzi.class_selection.entity.Lecturer">
         insert into lecturer values (#{lect_id},#{depa_name},
                                      #{lect_name},#{passwd},#{major})
@@ -33,6 +57,17 @@
     <delete id="dropLecturer" parameterType="java.lang.String">
         delete from lecturer where lect_id=#{lect_id}
     </delete>
+
+    <select id="getStudentList" resultType="fun.muzi.class_selection.entity.Student">
+        select stud_id, stud_name, gender, depa_name, major, total_credit
+        from student
+        <where>
+            <if test='depa_name != "*"'>AND depa_name = #{depa_name}
+                <if test='major != ""'>AND major = #{major}</if>
+            </if>
+            <if test='year != "*"'>AND stud_id like concat(#{year},'%')</if>
+        </where>
+    </select>
 
     <insert id="addStudent" parameterType="fun.muzi.class_selection.entity.Lecturer">
         insert into student values (#{stud_id},#{stud_name},#{gender},#{depa_name},
